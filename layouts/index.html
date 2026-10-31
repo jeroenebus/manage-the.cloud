@@ -1,0 +1,105 @@
+{{ define "main" }}
+{{- $posts := where site.RegularPages "Section" "posts" -}}
+{{- $latest := index $posts 0 -}}
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span><span class="grid-lines"></span></div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      {{ with $latest }}
+      <a class="pill" href="{{ .RelPermalink }}">
+        <span class="pill-dot"></span><span class="pill-label">Latest</span><span class="pill-text">{{ .Title }}</span>{{ partial "icon.html" "arrow-right" }}
+      </a>
+      {{ end }}
+      <h1>Practical guides to <span class="grad">manage the cloud</span>.</h1>
+      <p class="lead">Hands-on, screenshot-by-screenshot walkthroughs for Microsoft Intune, Windows, Entra and Azure. Written from real projects by {{ site.Params.author.name }}.</p>
+      <div class="cta">
+        <a class="btn primary" href="{{ "posts/" | relURL }}">Browse the guides {{ partial "icon.html" "arrow-right" }}</a>
+        <button class="btn ghost" type="button" data-search-open>{{ partial "icon.html" "search" }} Search <span class="kbd">Ctrl K</span></button>
+      </div>
+      <ul class="stats">
+        <li><strong>{{ len $posts }}</strong><span>in-depth guides</span></li>
+        <li><strong>{{ len site.Taxonomies.categories }}</strong><span>topics covered</span></li>
+        <li><strong>0</strong><span>cookies or trackers</span></li>
+      </ul>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="term">
+        <div class="term-bar"><i></i><i></i><i></i><span>PowerShell · Microsoft Graph</span></div>
+        <pre class="term-body"><span class="t-dim">PS C:\&gt;</span> <span class="t-fn">Connect-MgGraph</span> <span class="t-par">-Scopes</span> <span class="t-str">"DeviceManagementConfiguration.ReadWrite.All"</span>
+<span class="t-ok">✔</span> Connected to tenant <span class="t-str">manage-the.cloud</span>
+
+<span class="t-dim">PS C:\&gt;</span> <span class="t-fn">Get-MgDeviceManagementManagedDevice</span> <span class="t-op">|</span>
+    <span class="t-fn">Where-Object</span> { <span class="t-var">$_</span>.ComplianceState <span class="t-op">-ne</span> <span class="t-str">'compliant'</span> }
+
+<span class="t-ok">✔</span> 0 devices out of compliance
+<span class="t-ok">✔</span> LAPS policy assigned to <span class="t-str">All Windows devices</span>
+<span class="t-dim">PS C:\&gt;</span> <span class="caret"></span></pre>
+      </div>
+      <div class="float-card fc1">{{ partial "icon.html" "shield" }}<div><strong>Secure by default</strong><span>Endpoint security baselines</span></div></div>
+      <div class="float-card fc2">{{ partial "icon.html" "device" }}<div><strong>Autopilot ready</strong><span>Zero-touch deployment</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><p class="eyebrow">Topics</p><h2>Find your way around</h2></div>
+      <a class="more" href="{{ "categories/" | relURL }}">All topics {{ partial "icon.html" "arrow-right" }}</a>
+    </div>
+    <div class="topic-grid reveal">
+      {{ $icons := slice "device" "terminal" "key" "box" "shield" "cloud" }}
+      {{ range $i, $name := site.Params.featuredTopics }}
+        {{ with site.GetPage (printf "/categories/%s" ($name | urlize)) }}
+        <a class="topic t{{ mod $i 6 }}" href="{{ .RelPermalink }}">
+          <span class="topic-ico">{{ partial "icon.html" (index $icons (mod $i 6)) }}</span>
+          <span class="topic-name">{{ .Title }}</span>
+          <span class="topic-count">{{ len .Pages }} {{ cond (eq (len .Pages) 1) "guide" "guides" }}</span>
+        </a>
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+{{ with $latest }}
+<section class="section tight">
+  <div class="wrap">
+    <div class="section-head reveal"><div><p class="eyebrow">Featured</p><h2>Start with the newest</h2></div></div>
+    <div class="reveal">{{ partial "card.html" (dict "page" . "class" "feature") }}</div>
+  </div>
+</section>
+{{ end }}
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><p class="eyebrow">Latest</p><h2>Recent guides</h2></div>
+      <a class="more" href="{{ "posts/" | relURL }}">All guides {{ partial "icon.html" "arrow-right" }}</a>
+    </div>
+    <div class="card-grid reveal">
+      {{ range first 6 (after 1 $posts) }}{{ partial "card.html" . }}{{ end }}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="author reveal">
+      {{ with resources.Get site.Params.author.image }}{{ $im := .Fill "320x320 Center" }}<img class="author-photo" src="{{ $im.RelPermalink }}" width="160" height="160" alt="Portrait of {{ site.Params.author.name }}" loading="lazy">{{ end }}
+      <div class="author-copy">
+        <p class="eyebrow">About the author</p>
+        <h2>{{ site.Params.author.name }}</h2>
+        <p class="author-role">{{ site.Params.author.role }}</p>
+        <p>{{ site.Params.author.bio | markdownify }}</p>
+        <div class="author-links">
+          <a class="btn ghost sm" href="{{ "about-me/" | relURL }}">About me</a>
+          <a class="icon-btn" href="{{ site.Params.author.linkedin }}" target="_blank" rel="noopener" aria-label="LinkedIn">{{ partial "icon.html" "linkedin" }}</a>
+          <a class="icon-btn" href="{{ site.Params.author.github }}" target="_blank" rel="noopener" aria-label="GitHub">{{ partial "icon.html" "github" }}</a>
+          <a class="icon-btn" href="{{ "index.xml" | relURL }}" aria-label="RSS feed">{{ partial "icon.html" "rss" }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}

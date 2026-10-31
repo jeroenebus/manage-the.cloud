@@ -1,0 +1,86 @@
+{{ define "main" }}
+{{- $cats := .Params.categories -}}
+<article class="post">
+  <header class="post-head">
+    <div class="hero-bg" aria-hidden="true"><span class="blob b1"></span><span class="grid-lines"></span></div>
+    <div class="wrap narrow">
+      <a class="back" href="{{ "posts/" | relURL }}">{{ partial "icon.html" "arrow-left" }} All guides</a>
+      <div class="chips">
+        {{ range first 4 $cats }}<a class="chip" href="{{ (site.GetPage (printf "/categories/%s" (. | urlize))).RelPermalink }}">{{ . }}</a>{{ end }}
+      </div>
+      <h1>{{ .Title }}</h1>
+      {{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+      <div class="byline">
+        {{ with resources.Get site.Params.author.image }}{{ $im := .Fill "96x96 Center" }}<img src="{{ $im.RelPermalink }}" width="44" height="44" alt="" class="byline-photo">{{ end }}
+        <div class="byline-text">
+          <strong>{{ site.Params.author.name }}</strong>
+          <span class="meta">
+            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time>
+            <span class="dot-sep">·</span>
+            <span>{{ partial "icon.html" "clock" }} {{ partial "readtime.html" . }} min read</span>
+            {{ if gt (.Lastmod.Sub .Date).Hours 720 }}<span class="dot-sep">·</span><span>Updated {{ .Lastmod.Format "Jan 2006" }}</span>{{ end }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap post-layout{{ if lt .WordCount 350 }} no-toc{{ end }}">
+    <div class="post-main">
+      {{ with .Resources.GetMatch "feature*" }}
+        {{ $r := .Resize "1400x webp q85" }}
+        <figure class="cover"><img src="{{ $r.RelPermalink }}" width="{{ $r.Width }}" height="{{ $r.Height }}" alt="" decoding="async"></figure>
+      {{ end }}
+      <div class="prose" id="content">{{ .Content }}</div>
+
+      {{ with .Params.tags }}
+      <div class="post-tags"><span>Tags</span>
+        {{ range . }}<a class="chip" href="{{ (site.GetPage (printf "/tags/%s" (. | urlize))).RelPermalink }}">{{ . }}</a>{{ end }}
+      </div>
+      {{ end }}
+
+      <div class="share">
+        <span>Share this guide</span>
+        {{ $u := .Permalink | urlquery }}{{ $t := .Title | urlquery }}
+        <a class="icon-btn" href="https://www.linkedin.com/sharing/share-offsite/?url={{ $u }}" target="_blank" rel="noopener" aria-label="Share on LinkedIn">{{ partial "icon.html" "linkedin" }}</a>
+        <a class="icon-btn" href="https://twitter.com/intent/tweet?url={{ $u }}&text={{ $t }}" target="_blank" rel="noopener" aria-label="Share on X">{{ partial "icon.html" "x-twitter" }}</a>
+        <a class="icon-btn" href="mailto:?subject={{ $t }}&body={{ $u }}" aria-label="Share by email">{{ partial "icon.html" "mail" }}</a>
+        <button class="icon-btn" type="button" data-copy-link="{{ .Permalink }}" aria-label="Copy link">{{ partial "icon.html" "link" }}</button>
+      </div>
+
+      <div class="author box">
+        {{ with resources.Get site.Params.author.image }}{{ $im := .Fill "240x240 Center" }}<img class="author-photo sm" src="{{ $im.RelPermalink }}" width="88" height="88" alt="Portrait of {{ site.Params.author.name }}" loading="lazy">{{ end }}
+        <div class="author-copy">
+          <h2>{{ site.Params.author.name }}</h2>
+          <p class="author-role">{{ site.Params.author.role }}</p>
+          <p>{{ site.Params.author.bio | markdownify }}</p>
+        </div>
+      </div>
+
+      <nav class="pn" aria-label="More guides">
+        {{ with .NextInSection }}<a class="pn-item prev" href="{{ .RelPermalink }}"><small>{{ partial "icon.html" "arrow-left" }} Previous</small><span>{{ .Title }}</span></a>{{ else }}<span></span>{{ end }}
+        {{ with .PrevInSection }}<a class="pn-item next" href="{{ .RelPermalink }}"><small>Next {{ partial "icon.html" "arrow-right" }}</small><span>{{ .Title }}</span></a>{{ else }}<span></span>{{ end }}
+      </nav>
+    </div>
+
+    {{ if ge .WordCount 350 }}
+    <aside class="toc-wrap">
+      <details class="toc" id="toc">
+        <summary>On this page</summary>
+        {{ .TableOfContents }}
+      </details>
+    </aside>
+    {{ end }}
+  </div>
+
+  {{ $related := first 3 (where (.Site.RegularPages.Related . | complement (slice .)) "Section" "posts") }}
+  {{ with $related }}
+  <section class="section related">
+    <div class="wrap">
+      <div class="section-head"><div><p class="eyebrow">Keep reading</p><h2>Related guides</h2></div></div>
+      <div class="card-grid">{{ range . }}{{ partial "card.html" . }}{{ end }}</div>
+    </div>
+  </section>
+  {{ end }}
+</article>
+{{ end }}

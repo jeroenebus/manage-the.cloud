@@ -1,0 +1,27 @@
+{{- /* Post card. Context: page. Optional dict: page, class */ -}}
+{{- $p := . -}}
+{{- $cls := "" -}}
+{{- if reflect.IsMap . }}{{ $p = .page }}{{ $cls = .class }}{{ end -}}
+{{- $cats := $p.Params.categories -}}
+<article class="card {{ $cls }}" data-cats="{{ delimit (apply $cats "lower" ".") "|" }}">
+  <a class="card-media" href="{{ $p.RelPermalink }}" tabindex="-1" aria-hidden="true">
+    {{ with $p.Resources.GetMatch "feature*" }}
+      {{ $r := .Fill "720x405 webp q80 Center" }}
+      <img src="{{ $r.RelPermalink }}" width="{{ $r.Width }}" height="{{ $r.Height }}" alt="" loading="lazy" decoding="async">
+    {{ else }}
+      <div class="card-fallback">{{ partial "icon.html" "cloud" }}</div>
+    {{ end }}
+  </a>
+  <div class="card-body">
+    <div class="chips">
+      {{ range first 2 $cats }}<span class="chip">{{ . }}</span>{{ end }}
+    </div>
+    <h3 class="card-title"><a class="card-link" href="{{ $p.RelPermalink }}">{{ $p.Title }}</a></h3>
+    {{ with $p.Description }}<p class="card-desc">{{ . }}</p>{{ end }}
+    <div class="meta">
+      <time datetime="{{ $p.Date.Format "2006-01-02" }}">{{ $p.Date.Format "2 Jan 2006" }}</time>
+      <span class="dot-sep">·</span>
+      <span>{{ partial "readtime.html" $p }} min read</span>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,24 @@
+{{ define "main" }}
+<section class="page-hero">
+  <div class="hero-bg" aria-hidden="true"><span class="blob b1"></span><span class="blob b3"></span><span class="grid-lines"></span></div>
+  <div class="wrap">
+    <p class="eyebrow">{{ cond (eq .Section "posts") "Library" "Archive" }}</p>
+    <h1>{{ cond (eq .Section "posts") "All guides" .Title }}</h1>
+    <p class="lead">{{ cond (eq .Section "posts") "Every walkthrough in one place. Filter by topic or press Ctrl K to search." (printf "%d guides in this topic." (len .Pages)) }}</p>
+  </div>
+</section>
+<section class="section tight">
+  <div class="wrap">
+    {{ if eq .Section "posts" }}
+    <div class="filters" id="filters" role="group" aria-label="Filter by topic">
+      <button class="filter active" type="button" data-filter="*">All <span>{{ len .Pages }}</span></button>
+      {{ range first 8 site.Taxonomies.categories.ByCount }}<button class="filter" type="button" data-filter="{{ .Page.Title | lower }}">{{ .Page.Title }} <span>{{ .Count }}</span></button>{{ end }}
+    </div>
+    {{ end }}
+    <div class="card-grid" id="card-grid">
+      {{ range .Pages }}{{ partial "card.html" . }}{{ end }}
+    </div>
+    <p class="empty" id="empty" hidden>No guides match this topic yet.</p>
+  </div>
+</section>
+{{ end }}

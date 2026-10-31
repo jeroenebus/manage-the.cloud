@@ -1,0 +1,13 @@
+{{ define "main" }}
+<article class="post page">
+  <header class="post-head">
+    <div class="hero-bg" aria-hidden="true"><span class="blob b1"></span><span class="grid-lines"></span></div>
+    <div class="wrap narrow">
+      <h1>{{ .Title }}</h1>
+    </div>
+  </header>
+  <div class="wrap narrow">
+    <div class="prose" id="content">{{ .Content }}</div>
+  </div>
+</article>
+{{ end }}

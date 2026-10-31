@@ -1,0 +1,5 @@
+{{- $words := .WordCount -}}
+{{- $imgs := len (findRE `<img ` .Content) -}}
+{{- $secs := add (mul (div (float $words) (float site.Params.readingWordsPerMinute)) 60) (mul $imgs site.Params.secondsPerImage) -}}
+{{- $mins := int (math.Ceil (div $secs 60)) -}}
+{{- return (cond (lt $mins 1) 1 $mins) -}}

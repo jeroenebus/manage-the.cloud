@@ -1,0 +1,28 @@
+{{ define "main" }}
+<section class="page-hero">
+  <div class="hero-bg" aria-hidden="true"><span class="blob b1"></span><span class="blob b3"></span><span class="grid-lines"></span></div>
+  <div class="wrap">
+    <p class="eyebrow">{{ cond (eq .Data.Plural "categories") "Topics" "Tags" }}</p>
+    <h1>{{ cond (eq .Data.Plural "categories") "Browse by topic" "All tags" }}</h1>
+    <p class="lead">{{ len .Data.Terms }} {{ cond (eq .Data.Plural "categories") "topics" "tags" }} across {{ len (where site.RegularPages "Section" "posts") }} guides.</p>
+  </div>
+</section>
+<section class="section tight">
+  <div class="wrap">
+    {{ if eq .Data.Plural "categories" }}
+    <div class="topic-grid wide">
+      {{ range $i, $t := .Data.Terms.ByCount }}
+        <a class="topic t{{ mod $i 6 }}" href="{{ $t.Page.RelPermalink }}">
+          <span class="topic-name">{{ $t.Page.Title }}</span>
+          <span class="topic-count">{{ $t.Count }} {{ cond (eq $t.Count 1) "guide" "guides" }}</span>
+        </a>
+      {{ end }}
+    </div>
+    {{ else }}
+    <div class="chips cloud">
+      {{ range .Data.Terms.ByCount }}<a class="chip lg" href="{{ .Page.RelPermalink }}">{{ .Page.Title }} <span>{{ .Count }}</span></a>{{ end }}
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,15 @@
+{{ define "main" }}
+<section class="notfound">
+  <div class="hero-bg" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span><span class="grid-lines"></span></div>
+  <div class="wrap">
+    <p class="code404">404</p>
+    <h1>This page has left the cloud</h1>
+    <p class="lead">The page you are looking for moved, was renamed, or never existed. Try the search or head back to the guides.</p>
+    <div class="cta center">
+      <a class="btn primary" href="{{ "/" | relURL }}">Home</a>
+      <a class="btn ghost" href="{{ "posts/" | relURL }}">All guides</a>
+      <button class="btn ghost" type="button" data-search-open>{{ partial "icon.html" "search" }} Search</button>
+    </div>
+  </div>
+</section>
+{{ end }}

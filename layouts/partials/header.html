@@ -1,0 +1,28 @@
+<header class="site-header" id="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="{{ "/" | relURL }}" aria-label="{{ site.Title }} – home">
+      {{ partial "logo.html" . }}
+      <span class="brand-text"><strong>Manage The Cloud</strong><small>Jeroen Ebus</small></span>
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Main">
+      {{ $current := . }}
+      {{ range site.Menus.main }}
+        <a href="{{ .URL }}"{{ if or ($current.IsMenuCurrent "main" .) ($current.HasMenuCurrent "main" .) }} aria-current="page"{{ end }}>{{ .Name }}</a>
+      {{ end }}
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn search-open" type="button" aria-label="Search" data-search-open>
+        {{ partial "icon.html" "search" }}<span class="kbd" aria-hidden="true">Ctrl K</span>
+      </button>
+      <button class="icon-btn" type="button" id="theme-toggle" aria-label="Toggle dark and light mode">
+        <span class="when-dark">{{ partial "icon.html" "sun" }}</span>
+        <span class="when-light">{{ partial "icon.html" "moon" }}</span>
+      </button>
+      <button class="icon-btn menu-toggle" type="button" id="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+        <span class="when-closed">{{ partial "icon.html" "menu" }}</span>
+        <span class="when-open">{{ partial "icon.html" "close" }}</span>
+      </button>
+    </div>
+  </div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+</header>

@@ -1,0 +1,33 @@
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="{{ "/" | relURL }}">
+        {{ partial "logo.html" . }}
+        <span class="brand-text"><strong>Manage The Cloud</strong><small>Jeroen Ebus</small></span>
+      </a>
+      <p>{{ site.Params.tagline }}</p>
+    </div>
+    <div>
+      <h2 class="footer-h">Explore</h2>
+      <ul>
+        {{ range site.Menus.main }}<li><a href="{{ .URL }}">{{ .Name }}</a></li>{{ end }}
+        <li><a href="{{ "index.xml" | relURL }}">RSS feed</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="footer-h">Connect</h2>
+      <ul>
+        <li><a href="{{ site.Params.author.linkedin }}" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="{{ site.Params.author.github }}" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="{{ site.Params.author.twitter }}" target="_blank" rel="noopener">X / Twitter</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>{{ site.Params.copyright }}</span>
+    <span class="footer-links">
+      {{ range site.Menus.footer }}<a href="{{ .URL }}">{{ .Name }}</a>{{ end }}
+      <span class="dot-sep">·</span><span>No cookies. No tracking.</span>
+    </span>
+  </div>
+</footer>

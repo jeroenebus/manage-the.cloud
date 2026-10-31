@@ -1,0 +1,15 @@
+{
+  "cloud-native-certificate-enrollment-via-microsoft-intune-part-1-3": "Part 1 of 3: deploy a cloud-based certificate authority with SCEPman from the Azure Marketplace, ready for certificate enrollment via Microsoft Intune.",
+  "cloud-native-certificate-enrollment-via-microsoft-intune-part-2-3-intune-configuration": "Part 2 of 3: configure Microsoft Intune to deploy trusted root and SCEP user or device certificates to Windows devices using SCEPman.",
+  "cloud-native-certificate-enrollment-via-microsoft-intune-part-3-3-radiusaas": "Part 3 of 3: securely authenticate to Wi-Fi and network resources with certificates by setting up RADIUSaaS with Intune-issued certificates.",
+  "default-open-behaviour-for-microsoft-365-apps-office-documents-in-outlook": "Make Office documents linked in Outlook open in the desktop Microsoft 365 Apps instead of the browser, using Intune settings, a script or a remediation.",
+  "first-look-at-patch-my-pcs-home-updater": "A first look at Patch My PC Home Updater, the free tool that keeps home computers up to date: silent install options and the installation wizard.",
+  "getting-started-with-the-new-intune-suite-capabilities-in-your-m365-developer-program-tenant": "Try the new Intune Suite features, such as Enterprise Application Management and Device query, for free in your Microsoft 365 Developer Program tenant.",
+  "hello-world": "Welcome to Manage The Cloud, a blog about the journey to the cloud with Microsoft Intune, Windows, Azure and security.",
+  "how-to-getting-started-with-windows-laps-via-intune": "Step-by-step guide to Windows LAPS on Azure AD joined devices with Intune: enable it, create a local admin account, set the policy and view the password.",
+  "how-to-set-up-microsoft-endpoint-privilege-management": "Activate the 90-day Microsoft Endpoint Privilege Management trial in Intune, enable it on your devices and create your first elevation rules.",
+  "how-to-use-an-encoded-command-in-powershell": "How to encode and decode a PowerShell command with Base64, for example to store it in a scheduled task, and run it with -EncodedCommand.",
+  "set-a-microsoft-intune-application-requirement-powershell-script": "Stop an Intune app from installing on the wrong devices by using a PowerShell requirement script, for example to target only HP hardware.",
+  "windows-autopilot-not-showing-keyboard-selection-during-oobe": "Windows Autopilot skips the keyboard layout page during OOBE after choosing the region? A workaround I found for user-driven enrollments.",
+  "windows-remote-management-winrm-on-azure-ad-joined-devices": "Get Windows Remote Management (WinRM) working on Azure AD joined devices, so you can connect remotely with PowerShell on cloud-only endpoints."
+}

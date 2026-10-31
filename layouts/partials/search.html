@@ -1,0 +1,13 @@
+<div class="search" id="search" role="dialog" aria-modal="true" aria-label="Search" hidden>
+  <div class="search-backdrop" data-search-close></div>
+  <div class="search-panel">
+    <div class="search-input">
+      {{ partial "icon.html" "search" }}
+      <input id="search-q" type="search" placeholder="Search guides, topics, commands…" autocomplete="off" spellcheck="false" aria-label="Search">
+      <button type="button" class="kbd" data-search-close aria-label="Close search">Esc</button>
+    </div>
+    <ul class="search-results" id="search-results" role="listbox"></ul>
+    <div class="search-foot"><span>↑↓ to navigate</span><span>↵ to open</span><span>Runs locally in your browser</span></div>
+  </div>
+</div>
+{{ with site.Home.OutputFormats.Get "JSON" }}<meta name="search-index" content="{{ .RelPermalink }}">{{ end }}

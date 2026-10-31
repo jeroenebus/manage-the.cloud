@@ -1,0 +1,89 @@
+baseURL = "https://manage-the.cloud/"
+title = "Manage The Cloud"
+languageCode = "en"
+defaultContentLanguage = "en"
+enableRobotsTXT = true
+summaryLength = 0
+enableEmoji = true
+
+[pagination]
+  pagerSize = 100
+
+[permalinks]
+  [permalinks.page]
+    posts = "/:year/:month/:day/:slug/"
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[sitemap]
+  changefreq = "weekly"
+  filename = "sitemap.xml"
+  priority = 0.5
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[related]
+  threshold = 0
+  toLower = false
+  [[related.indices]]
+    name = "categories"
+    weight = 100
+  [[related.indices]]
+    name = "tags"
+    weight = 80
+  [[related.indices]]
+    name = "date"
+    weight = 10
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.parser]
+      wrapStandAloneImageWithinParagraph = false
+      [markup.goldmark.parser.attribute]
+        block = true
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    noClasses = false
+    lineNos = false
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+
+[menus]
+  [[menus.main]]
+    name = "Posts"
+    pageRef = "/posts"
+    weight = 10
+  [[menus.main]]
+    name = "Topics"
+    pageRef = "/categories"
+    weight = 20
+  [[menus.main]]
+    name = "About"
+    pageRef = "/about-me"
+    weight = 30
+  [[menus.footer]]
+    name = "Privacy policy"
+    pageRef = "/privacy-policy"
+    weight = 10
+
+[params]
+  tagline = "Practical guides for Intune, Windows, Entra and Azure."
+  description = "Step-by-step guides on Microsoft Intune, Windows, Entra, Azure and security, by Jeroen Ebus."
+  defaultSocialImage = "img/social.png"
+  copyright = "© 2026 Jeroen Ebus"
+  readingWordsPerMinute = 212
+  featuredTopics = ["Microsoft Intune", "PowerShell", "Certificates", "Autopilot", "Windows LAPS", "Azure AD"]
+  secondsPerImage = 12
+  [params.author]
+    name = "Jeroen Ebus"
+    role = "Modern workspace & cloud consultant"
+    image = "img/author.jpg"
+    bio = "Modern workspace and cloud consultant at [PeopleRock](https://peoplerock.nl). Working in IT since 2007, with a focus on end user computing: Microsoft Intune, Windows, Azure and security."
+    twitter = "https://twitter.com/JeroenEbus"
+    linkedin = "https://www.linkedin.com/in/jeroen-ebus/"
+    github = "https://github.com/jeroenebus/"
