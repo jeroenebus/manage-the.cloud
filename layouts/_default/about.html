@@ -1,0 +1,113 @@
+{{ define "main" }}
+{{ $a := site.Params.author }}
+<section class="about-hero">
+  <div class="hero-bg" aria-hidden="true"><span class="blob b1"></span><span class="blob b3"></span><span class="grid-lines"></span></div>
+  <div class="wrap about-grid">
+    <div class="about-copy">
+      <p class="eyebrow">About me</p>
+      <h1>Hi, I'm <span class="grad">Jeroen Ebus</span></h1>
+      <p class="about-role">{{ $a.role }} · <a href="https://peoplerock.nl" rel="noopener">PeopleRock</a></p>
+      <div class="about-text">{{ .Content }}</div>
+      <div class="author-links">
+        <a class="btn primary sm" href="{{ $a.linkedin }}" rel="noopener me">{{ partial "icon.html" "linkedin" }} LinkedIn</a>
+        <a class="btn ghost sm" href="{{ $a.github }}" rel="noopener me">{{ partial "icon.html" "github" }} GitHub</a>
+        <a class="btn ghost sm" href="{{ $a.twitter }}" rel="noopener me">{{ partial "icon.html" "x-twitter" }} X</a>
+        <a class="btn ghost sm" href="mailto:jeroen@manage-the.cloud">{{ partial "icon.html" "mail" }} Email</a>
+      </div>
+    </div>
+    <div class="about-photo-wrap">
+      {{ with resources.Get $a.image }}{{ $im := .Fill "720x720 Center" }}<img class="about-photo" src="{{ $im.RelPermalink }}" width="360" height="360" alt="Portrait of {{ $a.name }}">{{ end }}
+      <span class="float-card fc1">{{ partial "icon.html" "device" }} Intune</span>
+      <span class="float-card fc2">{{ partial "icon.html" "terminal" }} PowerShell</span>
+    </div>
+  </div>
+</section>
+
+<section class="section tight">
+  <div class="wrap">
+    <div class="about-stats">
+      <div><strong>{{ sub now.Year .Params.since }}+</strong><span>years in IT</span></div>
+      <div><strong>{{ len (where site.RegularPages "Section" "posts") }}</strong><span>in-depth guides</span></div>
+      <div><strong>{{ len site.Taxonomies.categories }}</strong><span>topics covered</span></div>
+      <div><strong>EUC</strong><span>end user computing focus</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><div><p class="eyebrow">Expertise</p><h2>What I work with</h2></div></div>
+    <div class="focus-grid">
+      {{ range .Params.focus }}
+      <article class="focus-card">
+        <span class="topic-ico">{{ partial "icon.html" .icon }}</span>
+        <h3>{{ .title }}</h3>
+        <p>{{ .text }}</p>
+        <div class="chips">{{ range .tags }}<span class="chip">{{ . }}</span>{{ end }}</div>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div><p class="eyebrow">Open source</p><h2>Scripts on GitHub</h2></div>
+      <a class="more" href="{{ $a.github }}" rel="noopener">All repositories {{ partial "icon.html" "arrow-right" }}</a>
+    </div>
+    <div class="repo-grid">
+      {{ range .Params.repos }}
+      <a class="repo" href="{{ .url }}" rel="noopener">
+        <span class="repo-top">{{ partial "icon.html" "github" }}<code>{{ .name }}</code>{{ partial "icon.html" "arrow-up-right" }}</span>
+        <span class="repo-text">{{ .text }}</span>
+        <span class="repo-lang"><i></i> PowerShell</span>
+      </a>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="about-company">
+      <div>
+        <p class="eyebrow">Day job</p>
+        <h2>PeopleRock</h2>
+        <p>PeopleRock is a Microsoft 365 partner from Waardenburg, the Netherlands. It focuses on managed services for organisations with 20 to 2000 employees: Microsoft 365, Intune device management, security and Azure cost optimisation.</p>
+        <a class="btn ghost sm" href="https://peoplerock.nl" rel="noopener">Visit peoplerock.nl {{ partial "icon.html" "arrow-up-right" }}</a>
+      </div>
+      <ul class="company-points">
+        <li>{{ partial "icon.html" "device" }} Microsoft Intune &amp; endpoint management</li>
+        <li>{{ partial "icon.html" "shield" }} Defender, Purview &amp; Zero Trust</li>
+        <li>{{ partial "icon.html" "key" }} Entra ID &amp; identity</li>
+        <li>{{ partial "icon.html" "cloud" }} Microsoft 365 &amp; Azure</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+{{ $latest := first 3 (where site.RegularPages "Section" "posts") }}
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div><p class="eyebrow">Read</p><h2>Latest guides</h2></div>
+      <a class="more" href="{{ "posts/" | relURL }}">All guides {{ partial "icon.html" "arrow-right" }}</a>
+    </div>
+    <div class="card-grid">{{ range $latest }}{{ partial "card.html" . }}{{ end }}</div>
+  </div>
+</section>
+
+<section class="section cta-section">
+  <div class="wrap">
+    <div class="about-cta">
+      <h2>Questions or feedback?</h2>
+      <p>Found a mistake, or want to share your own approach? I'd love to hear it.</p>
+      <div class="author-links">
+        <a class="btn primary" href="mailto:jeroen@manage-the.cloud">{{ partial "icon.html" "mail" }} Send an email</a>
+        <a class="btn ghost" href="{{ $a.linkedin }}" rel="noopener me">{{ partial "icon.html" "linkedin" }} Connect on LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
