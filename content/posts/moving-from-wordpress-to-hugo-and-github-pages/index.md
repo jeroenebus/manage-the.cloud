@@ -26,6 +26,10 @@ A static website is just a folder with HTML, CSS and images. There is no databas
 
 - Writing a new post is the same as writing documentation: a text file, a few screenshots and a `git push`.
 
+This is how my old WordPress website looked like, with the cookie settings button in the bottom left corner:
+
+![Screenshot: The old WordPress website](old-wordpress-site.png)
+
 ## Export the content from WordPress
 
 First thing to do is getting everything out of WordPress. I asked Copilot to read the posts, pages and images from my existing site and convert them to Hugo Markdown. For every post this resulted in a folder with an `index.md` and the screenshots next to it (a so called page bundle).
@@ -47,6 +51,26 @@ That last one is what you are looking at right now. A few things that I wanted:
 - Search (press **Ctrl+K**), a table of contents on every post, copy buttons on code blocks and clickable screenshots.
 
 - The header with **Manage The Cloud** and **Jeroen Ebus** on two separate lines, so it is readable on every screen size.
+
+This is the new home page in dark mode:
+
+![Screenshot: The new home page in dark mode](new-site-home-dark.png)
+
+And the same page in light mode. The site follows the theme of your system by default and remembers your choice when you use the toggle:
+
+![Screenshot: The new home page in light mode](new-site-home-light.png)
+
+The topics page groups the main topics together and shows how many guides every topic has:
+
+![Screenshot: The topics page](new-site-topics.png)
+
+Search runs completely in your browser, so there is nothing to send to a third party:
+
+![Screenshot: Searching for autopilot with Ctrl+K](new-site-search.png)
+
+And of course it works on your phone as well:
+
+![Screenshot: The home page on a mobile device](new-site-mobile.png)
 
 The logo went through a few versions as well. The first one was an “M with a dot” that I didn’t like, the second one was too round, so the current logo is a sharp, geometric **M**. Just tell the assistant what you don’t like and it will try again. 😉
 
