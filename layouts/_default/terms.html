@@ -10,11 +10,25 @@
 <section class="section tight">
   <div class="wrap">
     {{ if eq .Data.Plural "categories" }}
-    <div class="topic-grid wide">
-      {{ range $i, $t := .Data.Terms.ByCount }}
+    {{ $all := .Data.Terms.Alphabetical }}
+    {{ $main := slice }}{{ $more := slice }}
+    {{ range $all }}{{ if ge .Count 2 }}{{ $main = $main | append . }}{{ else }}{{ $more = $more | append . }}{{ end }}{{ end }}
+    {{ $main = sort $main "Count" "desc" }}
+    <h2 class="group-title">Main topics</h2>
+    <div class="topic-grid wide{{ if eq (mod (len $main) 3) 0 }} three{{ end }}">
+      {{ range $i, $t := $main }}
         <a class="topic t{{ mod $i 6 }}" href="{{ $t.Page.RelPermalink }}">
           <span class="topic-name">{{ $t.Page.Title }}</span>
-          <span class="topic-count">{{ $t.Count }} {{ cond (eq $t.Count 1) "guide" "guides" }}</span>
+          <span class="topic-count">{{ $t.Count }} guides</span>
+        </a>
+      {{ end }}
+    </div>
+    <h2 class="group-title">More topics</h2>
+    <div class="topic-grid wide">
+      {{ range $i, $t := $more }}
+        <a class="topic t{{ mod $i 6 }}" href="{{ $t.Page.RelPermalink }}">
+          <span class="topic-name">{{ $t.Page.Title }}</span>
+          <span class="topic-count">1 guide</span>
         </a>
       {{ end }}
     </div>
