@@ -26,14 +26,18 @@
     <div class="hero-visual" aria-hidden="true">
       <div class="term">
         <div class="term-bar"><i></i><i></i><i></i><span>PowerShell · Microsoft Graph</span></div>
-        <pre class="term-body"><span class="t-dim">PS C:\&gt;</span> <span class="t-fn">Connect-MgGraph</span> <span class="t-par">-Scopes</span> <span class="t-str">"DeviceManagementConfiguration.ReadWrite.All"</span>
-<span class="t-ok">✔</span> Connected to tenant <span class="t-str">manage-the.cloud</span>
+        <pre class="term-body"><span class="t-dim">PS C:\&gt;</span> <span class="t-fn">Connect-MgGraph</span> `
+<span class="t-dim">&gt;&gt;</span> <span class="t-par">-Scopes</span> <span class="t-str">"DeviceManagementManagedDevices.Read.All"</span>
+<span class="t-ok">Welcome to Microsoft Graph!</span>
 
-<span class="t-dim">PS C:\&gt;</span> <span class="t-fn">Get-MgDeviceManagementManagedDevice</span> <span class="t-op">|</span>
-    <span class="t-fn">Where-Object</span> { <span class="t-var">$_</span>.ComplianceState <span class="t-op">-ne</span> <span class="t-str">'compliant'</span> }
+<span class="t-dim">PS C:\&gt;</span> <span class="t-fn">Get-MgDeviceManagementManagedDevice</span> `
+<span class="t-dim">&gt;&gt;</span> <span class="t-par">-Filter</span> <span class="t-str">"complianceState eq 'noncompliant'"</span> <span class="t-op">|</span>
+<span class="t-dim">&gt;&gt;</span> <span class="t-fn">Select-Object</span> DeviceName, OperatingSystem
 
-<span class="t-ok">✔</span> 0 devices out of compliance
-<span class="t-ok">✔</span> LAPS policy assigned to <span class="t-str">All Windows devices</span>
+<span class="t-dim">DeviceName OperatingSystem</span>
+<span class="t-dim">---------- ---------------</span>
+LT-0412    Windows
+LT-0587    Windows
 <span class="t-dim">PS C:\&gt;</span> <span class="caret"></span></pre>
       </div>
       <div class="float-card fc1">{{ partial "icon.html" "shield" }}<div><strong>Secure by default</strong><span>Endpoint security baselines</span></div></div>
