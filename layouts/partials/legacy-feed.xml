@@ -1,5 +1,5 @@
 {{ `<?xml version="1.0" encoding="utf-8"?>` | safeHTML }}
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>{{ site.Title }}</title>
     <link>{{ site.Home.Permalink }}</link>
@@ -12,8 +12,9 @@
       <title>{{ .Title }}</title>
       <link>{{ .Permalink }}</link>
       <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</pubDate>
-      <guid isPermaLink="true">{{ .Permalink }}</guid>
+      <guid isPermaLink="false">{{ with .Params.wpid }}{{ printf "https://manage-the.cloud/?p=%v" . }}{{ else }}{{ $.Permalink }}{{ end }}</guid>
       <description>{{ (.Description | default .Summary) | plainify | transform.XMLEscape | safeHTML }}</description>
+      <content:encoded>{{ replaceRE `(src|href)="/([^/])` (printf `$1="%s$2` site.Home.Permalink) .Content | transform.XMLEscape | safeHTML }}</content:encoded>
     </item>
     {{- end }}
   </channel>

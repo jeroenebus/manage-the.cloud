@@ -3,6 +3,7 @@ title: "Cloud native certificate enrollment via Microsoft Intune (Part 2/3) – 
 date: 2023-07-13T20:42:28
 lastmod: 2023-08-10T11:53:52
 slug: "cloud-native-certificate-enrollment-via-microsoft-intune-part-2-3-intune-configuration"
+wpid: 550
 categories: ["Certificate Authority", "Certificates", "Microsoft Intune", "Public-Key Infrastructure", "SCEPman"]
 tags: ["802.1X", "Certificates", "Configuration Profiles", "Microsoft Intune", "SCEP"]
 description: "Part 2 of 3: configure Microsoft Intune to deploy trusted root and SCEP user or device certificates to Windows devices using SCEPman."

@@ -3,6 +3,7 @@ title: "Set a Microsoft Intune application requirement PowerShell script"
 date: 2023-05-08T21:38:47
 lastmod: 2023-06-15T07:33:37
 slug: "set-a-microsoft-intune-application-requirement-powershell-script"
+wpid: 48
 categories: ["Autopilot", "Microsoft Intune"]
 tags: ["0x81036502", "Autopilot", "Manage-The.Cloud", "Microsoft Intune", "PowerShell"]
 description: "Stop an Intune app from installing on the wrong devices by using a PowerShell requirement script, for example to target only HP hardware."

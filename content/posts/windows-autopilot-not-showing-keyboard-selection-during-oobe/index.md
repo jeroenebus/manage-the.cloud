@@ -3,6 +3,7 @@ title: "Windows Autopilot not showing keyboard selection during OOBE"
 date: 2023-06-14T16:34:05
 lastmod: 2023-06-20T22:43:36
 slug: "windows-autopilot-not-showing-keyboard-selection-during-oobe"
+wpid: 361
 categories: ["Autopilot", "ESP", "Microsoft Intune", "OOBE"]
 tags: ["Country", "Deployment Profile", "ESP", "Keyboard", "Language", "OOBE", "Region", "Windows Autopilot"]
 description: "Windows Autopilot skips the keyboard layout page during OOBE after choosing the region? A workaround I found for user-driven enrollments."

@@ -3,6 +3,7 @@ title: "How to: Getting started with Windows LAPS via Intune"
 date: 2023-05-26T19:23:32
 lastmod: 2023-06-16T07:25:56
 slug: "how-to-getting-started-with-windows-laps-via-intune"
+wpid: 221
 categories: ["Azure AD", "Microsoft Entra", "Microsoft Intune", "Windows LAPS"]
 tags: ["Account Protection", "Azure AD", "Local Administrator", "Microsoft Entra", "Microsoft Intune", "Remediation", "Windows LAPS"]
 description: "Step-by-step guide to Windows LAPS on Azure AD joined devices with Intune: enable it, create a local admin account, set the policy and view the password."

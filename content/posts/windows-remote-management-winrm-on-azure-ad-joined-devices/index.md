@@ -3,6 +3,7 @@ title: "Windows Remote Management (WinRM) on Azure AD joined devices"
 date: 2023-06-02T16:33:04
 lastmod: 2023-06-16T07:31:31
 slug: "windows-remote-management-winrm-on-azure-ad-joined-devices"
+wpid: 292
 categories: ["Azure AD", "Microsoft Intune", "PowerShell", "Windows LAPS", "Windows Remote Management"]
 tags: ["Azure AD", "Certificates", "HTTP", "HTTPS", "PowerShell", "Windows Remote Management", "WinRM"]
 description: "Get Windows Remote Management (WinRM) working on Azure AD joined devices, so you can connect remotely with PowerShell on cloud-only endpoints."

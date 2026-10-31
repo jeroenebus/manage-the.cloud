@@ -3,6 +3,7 @@ title: "Cloud native certificate enrollment via Microsoft Intune (Part 3/3) – 
 date: 2023-08-09T21:46:14
 lastmod: 2023-08-10T11:55:57
 slug: "cloud-native-certificate-enrollment-via-microsoft-intune-part-3-3-radiusaas"
+wpid: 575
 categories: ["Certificate Authority", "Certificates", "Microsoft Intune", "Public-Key Infrastructure", "RADIUSaaS", "SCEPman"]
 tags: ["802.1X", "CA", "Certificates", "Microsoft Intune", "PKI", "RADIUSaaS", "SCEP", "Ubiquiti", "Unifi"]
 description: "Part 3 of 3: securely authenticate to Wi-Fi and network resources with certificates by setting up RADIUSaaS with Intune-issued certificates."

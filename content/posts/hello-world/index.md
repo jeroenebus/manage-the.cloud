@@ -3,6 +3,7 @@ title: "Hello world!"
 date: 2023-05-06T18:48:27
 lastmod: 2023-06-15T07:32:59
 slug: "hello-world"
+wpid: 17
 categories: ["General"]
 description: "Welcome to Manage The Cloud, a blog about the journey to the cloud with Microsoft Intune, Windows, Azure and security."
 ---

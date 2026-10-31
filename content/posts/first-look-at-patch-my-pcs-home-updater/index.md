@@ -3,6 +3,7 @@ title: "First look at Patch my PC’s Home Updater!"
 date: 2024-10-27T12:22:05
 lastmod: 2024-10-27T12:27:56
 slug: "first-look-at-patch-my-pcs-home-updater"
+wpid: 859
 categories: ["Home Updater", "Patch my PC"]
 tags: ["Patching", "Software Deployment", "Software Updates"]
 description: "A first look at Patch My PC Home Updater, the free tool that keeps home computers up to date: silent install options and the installation wizard."

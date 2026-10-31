@@ -3,6 +3,7 @@ title: "Default open behaviour for Microsoft 365 Apps (Office) documents in Outl
 date: 2023-12-16T17:26:12
 lastmod: 2023-12-17T22:30:20
 slug: "default-open-behaviour-for-microsoft-365-apps-office-documents-in-outlook"
+wpid: 731
 categories: ["Microsoft Intune", "PowerShell"]
 tags: ["Administrative Template", "Detection", "Office", "Outlook", "Remediation", "Script", "Settings Catalog"]
 description: "Make Office documents linked in Outlook open in the desktop Microsoft 365 Apps instead of the browser, using Intune settings, a script or a remediation."

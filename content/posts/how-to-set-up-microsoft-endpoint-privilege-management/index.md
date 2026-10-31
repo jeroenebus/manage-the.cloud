@@ -3,6 +3,7 @@ title: "How to: Set up Microsoft Endpoint Privilege Management"
 date: 2023-05-08T21:40:50
 lastmod: 2023-09-21T20:52:42
 slug: "how-to-set-up-microsoft-endpoint-privilege-management"
+wpid: 50
 categories: ["Endpoint Privilege Management", "EPM", "Microsoft Intune"]
 tags: ["Endpoint Privilege Management", "EPM", "Guide", "How to", "Microsoft Intune", "Security"]
 description: "Activate the 90-day Microsoft Endpoint Privilege Management trial in Intune, enable it on your devices and create your first elevation rules."

@@ -3,6 +3,7 @@ title: "How to use an encoded command in PowerShell?"
 date: 2023-12-20T21:07:48
 lastmod: 2023-12-20T21:18:01
 slug: "how-to-use-an-encoded-command-in-powershell"
+wpid: 751
 categories: ["PowerShell"]
 tags: ["Base64", "Decode", "Encode", "PowerShell"]
 description: "How to encode and decode a PowerShell command with Base64, for example to store it in a scheduled task, and run it with -EncodedCommand."

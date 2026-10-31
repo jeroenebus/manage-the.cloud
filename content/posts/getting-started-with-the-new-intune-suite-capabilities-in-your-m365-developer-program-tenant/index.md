@@ -3,6 +3,7 @@ title: "Getting started with the new Intune Suite capabilities in your M365 Deve
 date: 2024-02-05T20:56:16
 lastmod: 2024-02-05T21:16:12
 slug: "getting-started-with-the-new-intune-suite-capabilities-in-your-m365-developer-program-tenant"
+wpid: 782
 categories: ["Advanced Analytics", "Device query", "Enterprise Application Management", "Intune Suite", "Microsoft Intune"]
 tags: ["M365 Developer Program", "Microsoft Intune", "Query"]
 description: "Try the new Intune Suite features, such as Enterprise Application Management and Device query, for free in your Microsoft 365 Developer Program tenant."

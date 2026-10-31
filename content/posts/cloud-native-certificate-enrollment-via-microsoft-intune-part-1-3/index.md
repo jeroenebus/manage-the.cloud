@@ -3,6 +3,7 @@ title: "Cloud native certificate enrollment via Microsoft Intune (Part 1/3) – 
 date: 2023-07-04T21:47:15
 lastmod: 2023-08-10T11:53:19
 slug: "cloud-native-certificate-enrollment-via-microsoft-intune-part-1-3"
+wpid: 427
 categories: ["Azure", "Certificate Authority", "Certificates", "Microsoft Intune", "Public-Key Infrastructure", "SCEPman"]
 tags: ["802.1X", "Azure", "CA", "Certificates", "Marketplace", "Microsoft Intune", "NDES", "PKCS", "PKI", "SCEP", "SCEPman"]
 description: "Part 1 of 3: deploy a cloud-based certificate authority with SCEPman from the Azure Marketplace, ready for certificate enrollment via Microsoft Intune."
