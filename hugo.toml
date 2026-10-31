@@ -1,6 +1,6 @@
 baseURL = "https://manage-the.cloud/"
 title = "Manage The Cloud"
-languageCode = "en"
+locale = "en"
 defaultContentLanguage = "en"
 enableRobotsTXT = true
 summaryLength = 0
