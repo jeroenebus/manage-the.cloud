@@ -260,6 +260,8 @@ a.chip:hover { border-color: var(--accent); }
 .post-head > .wrap { position: relative; z-index: 1; }
 .post-head h1 { font-size: clamp(2rem, 4.6vw, 3.2rem); font-weight: 700; letter-spacing: -.03em; line-height: 1.1; margin-top: 1rem; text-wrap: balance; }
 .post-head .lead { margin-top: 1rem; }
+.post-layout.head-grid { padding-bottom: 0; }
+.head-col { min-width: 0; }
 .back { display: inline-flex; align-items: center; gap: .45rem; margin-bottom: 1.25rem; color: var(--muted); font-weight: 500; font-size: .92rem; }
 .back:hover { color: var(--text); }
 .byline { display: flex; align-items: center; gap: .9rem; margin-top: 1.75rem; }
@@ -355,7 +357,11 @@ a.chip:hover { border-color: var(--accent); }
 @media (max-width: 600px) { .pn { grid-template-columns: 1fr; } }
 .related { background: var(--bg2); border-top: 1px solid var(--border); }
 .page .prose { padding-bottom: 4rem; }
-.page .prose img[alt*="Portrait"] { width: 160px; height: 160px; object-fit: cover; border-radius: 28px; margin: 1.5rem 0; }
+@media (min-width: 720px) {
+  .page .prose::after { content: ""; display: block; clear: both; }
+}
+.page .prose img[alt*="Portrait"] { width: 200px; height: 200px; object-fit: cover; border-radius: 28px; margin: 1.5rem 0; cursor: default; }
+@media (min-width: 720px) { .page .prose img[alt*="Portrait"] { float: right; margin: .3rem 0 1rem 2rem; width: 240px; height: 240px; } }
 
 /* 404 */
 .notfound { position: relative; padding: clamp(4rem, 12vw, 9rem) 0; text-align: center; overflow: hidden; isolation: isolate; }

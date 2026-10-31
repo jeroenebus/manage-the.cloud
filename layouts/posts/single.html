@@ -3,7 +3,7 @@
 <article class="post">
   <header class="post-head">
     <div class="hero-bg" aria-hidden="true"><span class="blob b1"></span><span class="grid-lines"></span></div>
-    <div class="wrap narrow">
+    <div class="wrap post-layout head-grid{{ if lt .WordCount 350 }} no-toc{{ end }}"><div class="head-col">
       <a class="back" href="{{ "posts/" | relURL }}">{{ partial "icon.html" "arrow-left" }} All guides</a>
       <div class="chips">
         {{ range first 4 $cats }}<a class="chip" href="{{ (site.GetPage (printf "/categories/%s" (. | urlize))).RelPermalink }}">{{ . }}</a>{{ end }}
@@ -22,7 +22,7 @@
           </span>
         </div>
       </div>
-    </div>
+    </div></div>
   </header>
 
   <div class="wrap post-layout{{ if lt .WordCount 350 }} no-toc{{ end }}">
