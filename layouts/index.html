@@ -1,4 +1,5 @@
 {{ define "main" }}
+{{- (resources.FromString "feed/index.html" (partial "legacy-feed.xml" .)).Publish -}}
 {{- $posts := where site.RegularPages "Section" "posts" -}}
 {{- $latest := index $posts 0 -}}
 <section class="hero">

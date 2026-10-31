@@ -1,0 +1,4 @@
+{{ range hugo.Data.legacy.category }}
+  {{ $to := index hugo.Data.legacy.renamed . | default . }}
+  {{ $.AddPage (dict "path" . "title" (printf "Moved: %s" .) "layout" "redirect" "params" (dict "target" (printf "/categories/%s/" $to))) }}
+{{ end }}

@@ -1,0 +1,10 @@
+# Old WordPress archive slugs. Redirect pages are generated at
+# /category/<slug>/ and /tag/<slug>/ by content/*/_content.gotmpl.
+category = ["advanced-analytics", "autopilot-2", "azure", "azure-ad", "certificate-authority", "certificates", "device-query", "endpoint-privilege-management", "enterprise-application-management", "epm", "esp", "general", "home-updater", "intune-suite", "microsoft-entra", "microsoft-intune", "oobe", "patch-my-pc", "powershell", "public-key-infrastructure", "radiusaas", "scepman", "windows-laps", "windows-remote-management"]
+tag = ["0x81036502", "802-1x", "account-protection", "administrative-template", "autopilot", "azure", "azure-ad", "base64", "ca", "certificates", "configuration-profiles", "country", "decode", "deployment-profile", "detection", "encode", "endpoint-privilege-management", "epm", "esp", "guide", "how-to", "http", "https", "keyboard", "language", "local-administrator", "m365-developer-program", "manage-the-cloud", "marketplace", "microsoft-entra", "microsoft-intune", "ndes", "office", "oobe", "outlook", "patching", "pkcs", "pki", "powershell", "query", "radiusaas", "region", "remediation", "scep", "scepman", "script", "security", "settings-catalog", "software-deployment", "software-updates", "ubiquiti", "unifi", "windows-autopilot", "windows-laps", "windows-remote-management", "winrm"]
+
+# Old slug -> new term slug, only where they differ.
+[renamed]
+  autopilot-2 = "autopilot"
+  802-1x = "802.1x"
+  manage-the-cloud = "manage-the.cloud"

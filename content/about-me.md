@@ -3,6 +3,7 @@ title: "About me"
 date: 2023-05-06T18:23:33
 slug: "about-me"
 layout: "about"
+aliases: ["/author/jeroenebus/", "/author/jeroen-ebus/"]
 description: "Jeroen Ebus is a modern workspace and cloud consultant at PeopleRock, working in IT since 2007 with a focus on end user computing: Microsoft Intune, Windows, Entra and Azure."
 showDate: false
 showReadingTime: false
