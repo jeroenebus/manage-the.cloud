@@ -1,13 +1,13 @@
 ---
 title: "Privacy Policy"
 date: 2023-05-06T17:44:15
-lastmod: 2026-10-30T00:00:00
+lastmod: 2026-11-01T00:00:00
 slug: "privacy-policy"
 showDate: false
 showReadingTime: false
 ---
 
-*Last updated: 30 October 2026*
+*Last updated: 1 November 2026*
 
 ## Who I am
 
@@ -19,13 +19,15 @@ You can reach me via [LinkedIn](https://www.linkedin.com/in/jeroen-ebus/), [GitH
 
 None by itself. This site is a static website: it has no contact forms, no user accounts, no newsletter and no analytics or advertising tools. I do not collect, store or process personal data about visitors. The only optional exception is the comment box, see [Comments](#comments) below.
 
-## Hosting
+## Hosting and domain name
 
 The site is hosted on [GitHub Pages](https://pages.github.com/). Like any web host, GitHub may process technical data such as your IP address, browser type and the pages you request in its server logs, for security and operational purposes. I do not have access to these logs as a personal data source. See the [GitHub Privacy Statement](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement) for details.
 
+The domain name is registered at [Namecheap](https://www.namecheap.com/), which also runs the DNS servers that point the domain to GitHub. When your device looks up this website's address, the DNS servers may see the IP address of your device or your DNS provider. Namecheap does not receive any information about the pages you read, because the site itself is served by GitHub. See the [Namecheap Privacy Policy](https://www.namecheap.com/legal/general/privacy-policy/) for details.
+
 ## Cookies and local storage
 
-This site does not set any cookies. To remember whether you prefer the dark or light appearance, the site may store that choice in your browser's local storage. This value stays on your device and is never sent to me or to anyone else. You can remove it at any time by clearing your browser's site data.
+This site does not set any cookies. To remember whether you prefer the dark or light appearance, the site may store that choice in your browser's local storage. This value stays on your device and is never sent to me or to anyone else. You can remove it at any time by clearing your browser's site data. If you load the comment box (see [Comments](#comments)), Giscus and GitHub may store data in your browser as well, for example to keep you signed in.
 
 ## Fonts, scripts and images
 
@@ -39,7 +41,7 @@ The search function runs entirely in your browser using an index that is downloa
 
 Some older articles show comments that were left on the previous WordPress version of this site. These are archived as plain text (name, date and comment) and are not editable.
 
-New comments are handled by [Giscus](https://giscus.app/), which stores them in GitHub Discussions. The comment box is not loaded automatically: only when you click **Load comments** does your browser connect to giscus.app and GitHub, and you need a GitHub account to comment. Those services process your data under their own privacy policies ([GitHub](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement)). Comments you post are public. To have a comment removed, delete it yourself in GitHub or contact me.
+New comments are handled by [Giscus](https://giscus.app/), an open-source comment system that is not part of GitHub. It stores comments as GitHub Discussions in the public repository of this site. The comment box is not loaded automatically: only when you click **Load comments** does your browser connect to giscus.app and GitHub, and you need a GitHub account to comment. When you sign in, Giscus and GitHub process your GitHub username, profile picture and the comment you write, and your IP address. These services process your data under their own privacy policies (see [Giscus](https://github.com/giscus/giscus/blob/main/PRIVACY-POLICY.md) and [GitHub](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement)). Comments you post are public, including your username. To have a comment removed, delete it yourself in GitHub or contact me.
 
 ## External links and embedded content
 
@@ -55,4 +57,4 @@ Because I do not collect personal data through this site, there is normally no d
 
 ## Changes to this policy
 
-If the site changes, for example by adding analytics or comments, I will update this policy and the date at the top.
+If the site changes, for example by adding analytics or other third-party services, I will update this policy and the date at the top.
