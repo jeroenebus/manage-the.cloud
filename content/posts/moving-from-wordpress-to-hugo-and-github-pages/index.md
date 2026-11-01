@@ -174,4 +174,6 @@ Moving from WordPress to Hugo and GitHub Pages is not as hard as I thought, espe
 
 I hope that this post helps you to make the move as well, and if you have any questions, feel free to reach out!
 
+A special thanks to Evert from [Integration & Automation Solutions](https://pavati.nl/) for being a mentor in Automation and AI First, and for the support!
+
 Thanks for reading!
