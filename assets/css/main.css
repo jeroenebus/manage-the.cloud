@@ -355,6 +355,21 @@ a.chip:hover { border-color: var(--accent); }
 .pn-item span { font: 600 1rem/1.3 var(--font-display); }
 .pn-item.next { text-align: right; align-items: flex-end; }
 @media (max-width: 600px) { .pn { grid-template-columns: 1fr; } }
+.comments { margin-top: 2.5rem; }
+.comments h2 { font-size: 1.4rem; margin-bottom: 1rem; }
+.comments-live { margin-bottom: 1.5rem; color: var(--muted); }
+.comments-live .btn { margin-top: .5rem; }
+.comments-archive > summary { cursor: pointer; color: var(--muted); font-size: .95rem; margin-bottom: 1rem; }
+.comment-list { list-style: none; margin: 0; padding: 0; display: grid; gap: .9rem; }
+.comment-list .comment-list { margin-top: .9rem; padding-left: 1.2rem; border-left: 2px solid var(--border); }
+.comment { background: var(--bg2); border: 1px solid var(--border); border-radius: calc(var(--radius) - 6px); padding: .9rem 1.1rem; }
+.comment .comment { background: transparent; }
+.comment-head { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; margin-bottom: .4rem; }
+.comment-head time { color: var(--muted); font-size: .85rem; }
+.comment-body { overflow-wrap: anywhere; }
+.comment-body p { margin: 0 0 .6rem; }
+.comment-body p:last-child { margin-bottom: 0; }
+.comment.owner { border-color: color-mix(in srgb, var(--link) 40%, var(--border)); }
 .related { background: var(--bg2); border-top: 1px solid var(--border); }
 .page .prose { padding-bottom: 4rem; }
 

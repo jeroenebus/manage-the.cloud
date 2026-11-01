@@ -1,0 +1,38 @@
+{
+  "292": [
+    {
+      "id": 1028, "parent": 0, "author": "Carl in 't Veld", "url": "https://www.carlintveld.nl/", "date": "2025-01-26",
+      "body": "How can you set up granular access to Entra ID managed LAPS passwords on a per machine basis?"
+    },
+    {
+      "id": 1029, "parent": 1028, "author": "Jeroen Ebus", "url": "", "date": "2025-01-28", "owner": true,
+      "body": "Hi Carl,\n\nAt this point this isn't possible, the only thing you can configure is RBAC for LAPS passwords.\nThere are 2 flavour then, read only LAPS metadata or read LAPS metadata and passwords.\n\n<https://learn.microsoft.com/en-us/mem/intune/protect/windows-laps-overview#role-based-access-controls-for-laps>\n\nJeroen."
+    },
+    {
+      "id": 1030, "parent": 0, "author": "KDZ", "url": "", "date": "2025-03-05",
+      "body": "Hello, i got this working now, thank you for this article. But as soon i assign the windows security baseline, i can't connect anymore. Do you eventually know which settings i have to change in the Baselines to make it work?\nThank you in advance."
+    },
+    {
+      "id": 1031, "parent": 1030, "author": "Jeroen Ebus", "url": "", "date": "2025-03-06", "owner": true,
+      "body": "Hi KDZ,\n\nGood to hear that you've got it working in your environment.\nI assume that you are referencing to the Microsoft Intune Security Baseline.\n\nAre you connecting via HTTP or HTTPS?\n\nBecause when you are connecting via HTTP you are possible conflicting with \"Allow unencrypted traffic\" being disabled in the baseline.\n<https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-remotemanagement?WT.mc_id=Portal-fx#allowunencryptedtraffic_client>\n\nJeroen."
+    },
+    {
+      "id": 1032, "parent": 1031, "author": "KDZ", "url": "", "date": "2025-03-06",
+      "body": "Hi Jeroen,\nThank you for the reply. I'm connecting over https. I deploy certificates to all clients and enabled the WinRM listener with the client certificate. I used Anthony Fontanez guide for this. Connecting to the clients using \"-UseSSL\" works fine with the LAPS User. But as soon as i assign the \"Security Baseline for Windows 10 and later\" i get a Access Denied when i try to connect. There are so many Settings in the Baseline, i don't know where to start searching."
+    },
+    {
+      "id": 1033, "parent": 1032, "author": "Jeroen Ebus", "url": "", "date": "2025-03-28", "owner": true,
+      "body": "Hi KDZ,\n\nHave to set it up in my lab again, then I will apply the security baseline to check out what's blocking the connection.\n\nJeroen."
+    },
+    {
+      "id": 1034, "parent": 0, "author": "William Evans", "url": "", "date": "2025-04-17",
+      "body": "We have just recently enabled LAPS and Security Baselines from MS and too cannot WinRM over HTTPS. Co-managed and HAADJ. Was it possible to find the setting that breaks this?"
+    }
+  ],
+  "731": [
+    {
+      "id": 86, "parent": 0, "author": "Dennie van Binsbergen", "url": "", "date": "2023-12-19",
+      "body": "Thanks for the scripts!"
+    }
+  ]
+}

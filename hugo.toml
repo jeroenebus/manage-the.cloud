@@ -88,3 +88,10 @@ enableEmoji = true
     twitter = "https://twitter.com/JeroenEbus"
     linkedin = "https://www.linkedin.com/in/jeroen-ebus/"
     github = "https://github.com/jeroenebus/"
+
+  # Fill in after enabling Discussions and installing the Giscus app (https://giscus.app). Leave repo empty to hide the comment box.
+  [params.giscus]
+    repo = ""
+    repoId = ""
+    category = "Comments"
+    categoryId = ""

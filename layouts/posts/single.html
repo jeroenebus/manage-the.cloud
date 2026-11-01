@@ -57,6 +57,8 @@
         </div>
       </div>
 
+      {{ partial "comments.html" . }}
+
       <nav class="pn" aria-label="More guides">
         {{ with .NextInSection }}<a class="pn-item prev" href="{{ .RelPermalink }}"><small>{{ partial "icon.html" "arrow-left" }} Previous</small><span>{{ .Title }}</span></a>{{ else }}<span></span>{{ end }}
         {{ with .PrevInSection }}<a class="pn-item next" href="{{ .RelPermalink }}"><small>Next {{ partial "icon.html" "arrow-right" }}</small><span>{{ .Title }}</span></a>{{ else }}<span></span>{{ end }}

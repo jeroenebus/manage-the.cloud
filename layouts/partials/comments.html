@@ -1,0 +1,42 @@
+{{- $archive := slice -}}
+{{- with .Params.wpid }}{{ $archive = index hugo.Data.comments (string .) | default slice }}{{ end -}}
+{{- $g := site.Params.giscus -}}
+{{ if or $archive $g.repo }}
+<section class="comments" id="comments" aria-labelledby="comments-title">
+  <h2 id="comments-title">Comments</h2>
+
+  {{ if $g.repo }}
+  <div class="comments-live">
+    <p>Comments are powered by GitHub Discussions (Giscus). Nothing is loaded from GitHub until you click the button.</p>
+    <button class="btn" type="button" id="load-comments"
+      data-repo="{{ $g.repo }}" data-repo-id="{{ $g.repoId }}"
+      data-category="{{ $g.category }}" data-category-id="{{ $g.categoryId }}"
+      data-term="{{ .File.ContentBaseName }}">Load comments</button>
+    <div id="giscus-host"></div>
+  </div>
+  {{ end }}
+
+  {{ if $archive }}
+  <details class="comments-archive"{{ if not $g.repo }} open{{ end }}>
+    <summary>{{ len $archive }} comment{{ if gt (len $archive) 1 }}s{{ end }} from the old WordPress site (archived, read-only)</summary>
+    <ol class="comment-list">
+      {{ range where $archive "parent" 0 }}{{ template "comment" (dict "c" . "all" $archive) }}{{ end }}
+    </ol>
+  </details>
+  {{ end }}
+</section>
+{{ end }}
+
+{{ define "comment" }}
+{{- $c := .c -}}
+<li class="comment{{ if $c.owner }} owner{{ end }}" id="comment-{{ $c.id }}">
+  <div class="comment-head">
+    <strong>{{ if $c.url }}<a href="{{ $c.url }}" rel="nofollow ugc noopener" target="_blank">{{ $c.author }}</a>{{ else }}{{ $c.author }}{{ end }}</strong>
+    {{ if $c.owner }}<span class="chip">Author</span>{{ end }}
+    <time datetime="{{ $c.date }}">{{ dateFormat "2 January 2006" $c.date }}</time>
+  </div>
+  <div class="comment-body">{{ $c.body | markdownify }}</div>
+  {{ $kids := where .all "parent" $c.id }}
+  {{ with $kids }}<ol class="comment-list">{{ range . }}{{ template "comment" (dict "c" . "all" $.all) }}{{ end }}</ol>{{ end }}
+</li>
+{{ end }}

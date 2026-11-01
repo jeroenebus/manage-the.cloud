@@ -17,7 +17,7 @@ You can reach me via [LinkedIn](https://www.linkedin.com/in/jeroen-ebus/), [GitH
 
 ## What data this site collects
 
-None. This site is a static website: it has no comments, no contact forms, no user accounts, no newsletter and no analytics or advertising tools. I do not collect, store or process personal data about visitors.
+None by itself. This site is a static website: it has no contact forms, no user accounts, no newsletter and no analytics or advertising tools. I do not collect, store or process personal data about visitors. The only optional exception is the comment box, see [Comments](#comments) below.
 
 ## Hosting
 
@@ -29,11 +29,17 @@ This site does not set any cookies. To remember whether you prefer the dark or l
 
 ## Fonts, scripts and images
 
-All fonts, scripts, styles and images are served from this site itself. No third-party content delivery networks, font services or tracking scripts are loaded.
+All fonts, scripts, styles and images are served from this site itself. No third-party content delivery networks, font services or tracking scripts are loaded, except the comment box when you choose to load it.
 
 ## Search
 
 The search function runs entirely in your browser using an index that is downloaded with the site. Your search terms are not sent anywhere.
+
+## Comments
+
+Some older articles show comments that were left on the previous WordPress version of this site. These are archived as plain text (name, date and comment) and are not editable.
+
+New comments are handled by [Giscus](https://giscus.app/), which stores them in GitHub Discussions. The comment box is not loaded automatically: only when you click **Load comments** does your browser connect to giscus.app and GitHub, and you need a GitHub account to comment. Those services process your data under their own privacy policies ([GitHub](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement)). Comments you post are public. To have a comment removed, delete it yourself in GitHub or contact me.
 
 ## External links and embedded content
 

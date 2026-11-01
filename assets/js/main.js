@@ -188,4 +188,27 @@
       else if (e.key === "/" && box.hidden && !/input|textarea/i.test(document.activeElement.tagName)) { e.preventDefault(); openSearch(); }
     });
   }
+
+  /* Comments: Giscus is only loaded after an explicit click */
+  var lc = $("#load-comments");
+  if (lc) lc.addEventListener("click", function () {
+    var s = document.createElement("script"), d = lc.dataset;
+    s.src = "https://giscus.app/client.js";
+    s.async = true;
+    s.crossOrigin = "anonymous";
+    s.setAttribute("data-repo", d.repo);
+    s.setAttribute("data-repo-id", d.repoId);
+    s.setAttribute("data-category", d.category);
+    s.setAttribute("data-category-id", d.categoryId);
+    s.setAttribute("data-mapping", "specific");
+    s.setAttribute("data-term", d.term);
+    s.setAttribute("data-strict", "1");
+    s.setAttribute("data-reactions-enabled", "1");
+    s.setAttribute("data-emit-metadata", "0");
+    s.setAttribute("data-input-position", "top");
+    s.setAttribute("data-theme", root.dataset.theme === "light" ? "light" : "dark");
+    s.setAttribute("data-lang", "en");
+    $("#giscus-host").appendChild(s);
+    lc.hidden = true;
+  });
 })();
