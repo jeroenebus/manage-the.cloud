@@ -5,7 +5,7 @@ slug: "moving-from-wordpress-to-hugo-and-github-pages"
 categories: ["General"]
 tags: ["GitHub Copilot", "GitHub Pages", "Hugo", "Markdown", "Static website", "WordPress"]
 description: "How I moved this blog from WordPress to a static Hugo site on GitHub Pages with the help of GitHub Copilot: export, theme, SEO, redirects, RSS and publishing new posts."
-draft: true
+draft: false
 ---
 
 In this blogpost I will tell you how I moved my blog from WordPress to a static website, hosted on GitHub. Not because WordPress is bad, but because I wanted a website that is fast, secure by default, free of plugin updates and that I can write in Markdown, just like the guides I write for my work.
@@ -116,9 +116,29 @@ When you are happy, change `draft: true` to `draft: false`, commit and push. Eve
 
 ## Publishing on GitHub Pages
 
-<!-- TODO: fill in after the site is live: repository name, GitHub Pages settings, DNS records for manage-the.cloud, and whether you use Cloudflare. -->
+The website is published by a GitHub Actions workflow. Every push to the `main` branch builds the site with Hugo and publishes it on GitHub Pages. These are the steps I followed:
 
-The website is published by a GitHub Actions workflow. Every push to the `main` branch builds the site with Hugo and publishes it on GitHub Pages. For the custom domain `manage-the.cloud` you only have to point your DNS to GitHub and add a `CNAME` file to the repository.
+1. **Create a public repository** on GitHub. A free GitHub account can only use GitHub Pages with a public repository, and the same goes for Giscus comments. Don’t put anything in it that you don’t want to share. Drafts are not built, but they are visible in the repository.
+
+2. **Set the Pages source.** In the repository go to *Settings → Pages* and set the source to **GitHub Actions**. The workflow in `.github/workflows/hugo.yml` installs Hugo, builds the site and deploys it. After the first run the site is available on `https://<user>.github.io/<repository>/`.
+
+3. **Add a `CNAME` file.** Put a file named `CNAME` with only `manage-the.cloud` in the `static` folder, so it ends up in the root of the published site.
+
+4. **Point the DNS to GitHub.** My domain is registered at Namecheap. For the apex domain I created four `A` records with the GitHub Pages IP addresses `185.199.108.153`, `185.199.109.153`, `185.199.110.153` and `185.199.111.153`. I did the same for `www`. I left the MX and TXT records alone, so email keeps working.
+
+5. **Set the custom domain** in *Settings → Pages* and wait for GitHub to issue the certificate. When it is ready, enable **Enforce HTTPS**. From then on, `http://` and `www` are redirected to `https://manage-the.cloud`.
+
+6. **Verify the domain.** In your GitHub account settings under *Pages*, add the domain and create the TXT record that GitHub shows you (`_github-pages-challenge-<user>`). This prevents other people from publishing to your domain if the DNS ever breaks.
+
+A few things that cost me some time:
+
+- **Namecheap’s HTTPS toggle.** Every record in Advanced DNS has an *HTTPS* switch. New records have it on, and then Namecheap keeps serving its own address instead of the one you entered. Switch it off for the records that point to GitHub.
+- **No CNAME for `www`.** Namecheap refused to create a CNAME for me, so I used `A` records for `www` as well. That works fine.
+- **Certificate stays on “none”.** If GitHub doesn’t issue a certificate after the DNS is correct, remove the custom domain in the Pages settings and add it again. It took about 30 seconds after that.
+- **Still `http://` after enforcing HTTPS.** GitHub’s cache can keep serving the old page for a while. A new deployment clears it.
+- **Redirects.** GitHub Pages can’t do server-side redirects, so the old WordPress addresses for categories, tags and pages use a small redirect page instead of a real 301. If you need real 301 redirects, put Cloudflare in front of it. I didn’t, for now.
+
+I also switched on Domain Lock, two-factor authentication, auto-renew and security alerts at Namecheap, and added a DMARC record. If a domain expires or gets hijacked, it’s over, so this is worth five minutes.
 
 ## What I learned
 
