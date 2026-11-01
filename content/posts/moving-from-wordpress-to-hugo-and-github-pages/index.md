@@ -4,7 +4,7 @@ date: 2026-10-31T14:00:00+01:00
 slug: "moving-from-wordpress-to-hugo-and-github-pages"
 categories: ["General"]
 tags: ["GitHub Copilot", "GitHub Pages", "Hugo", "Markdown", "Static website", "WordPress"]
-description: "How I moved this blog from WordPress to a static Hugo site on GitHub Pages with the help of GitHub Copilot: export, theme, SEO, redirects, RSS and publishing new posts."
+description: "How I moved this blog from WordPress to a static Hugo site on GitHub Pages with the help of GitHub Copilot: export, theme, SEO, redirects, RSS, comments with Giscus and publishing new posts."
 draft: false
 ---
 
@@ -44,7 +44,7 @@ That last one is what you are looking at right now. A few things that I wanted:
 
 - A dark and a light theme that follows your system setting, with a toggle.
 
-- No cookies, no trackers and no third-party requests. The fonts are hosted on the site itself.
+- No cookies and no trackers. The fonts are hosted on the site itself, and the only third-party content (comments) is loaded when you ask for it.
 
 - A good looking home page, topic pages that are easy to browse and an About page.
 
@@ -98,6 +98,22 @@ I also added a one-line description to every post, and a default share image. No
 
 Also the privacy policy got a rewrite. Because the site has no cookies and no trackers, there is no cookie banner needed.
 
+## Comments
+
+A static website has no database, so comments need a different solution. I had 8 approved comments on WordPress that I didn’t want to lose, and I still wanted people to be able to react on a new post. I did two things:
+
+- **Archive the old comments.** I exported them from WordPress to a data file in the repository (without email addresses). Under the posts that had comments, the site shows a collapsed “comments from the old WordPress site” block, including the replies.
+
+- **Giscus for new comments.** [Giscus](https://giscus.app) is an open-source comment system that stores the comments as **GitHub Discussions** in your own repository. Visitors sign in with their GitHub account. That fits well with my audience, and I own the comments. Note that Giscus is not made by GitHub, it just uses GitHub as the backend.
+
+The setup is simple:
+
+1. Enable **Discussions** in the repository settings. The repository has to be public.
+2. Install the Giscus app on the repository.
+3. Use the Giscus configuration page to get the repository ID and the category ID, and put these in the site configuration.
+
+I didn’t want the site to talk to a third party without asking, so the comment box is only loaded after a visitor clicks **Load comments**. Until then, nothing is requested from Giscus or GitHub. I mentioned this in the privacy policy as well.
+
 ## Writing a new post
 
 This was the most important requirement for me: writing a new post should be easy. The site now has a template for it. In the folder of the website:
@@ -124,7 +140,7 @@ The website is published by a GitHub Actions workflow. Every push to the `main` 
 
 3. **Add a `CNAME` file.** Put a file named `CNAME` with only `manage-the.cloud` in the `static` folder, so it ends up in the root of the published site.
 
-4. **Point the DNS to GitHub.** My domain is registered at Namecheap. For the apex domain I created four `A` records with the GitHub Pages IP addresses `185.199.108.153`, `185.199.109.153`, `185.199.110.153` and `185.199.111.153`. I did the same for `www`. I left the MX and TXT records alone, so email keeps working.
+4. **Point the DNS to GitHub.** At your domain registrar, create the `A` records for the apex domain with the IP addresses from the [GitHub documentation](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site), and a record for `www`. Leave the MX and TXT records alone, so email keeps working.
 
 5. **Set the custom domain** in *Settings → Pages* and wait for GitHub to issue the certificate. When it is ready, enable **Enforce HTTPS**. From then on, `http://` and `www` are redirected to `https://manage-the.cloud`.
 
@@ -132,13 +148,13 @@ The website is published by a GitHub Actions workflow. Every push to the `main` 
 
 A few things that cost me some time:
 
-- **Namecheap’s HTTPS toggle.** Every record in Advanced DNS has an *HTTPS* switch. New records have it on, and then Namecheap keeps serving its own address instead of the one you entered. Switch it off for the records that point to GitHub.
-- **No CNAME for `www`.** Namecheap refused to create a CNAME for me, so I used `A` records for `www` as well. That works fine.
+- **Check the proxy or “HTTPS” switch at your DNS provider.** Some providers have a per-record switch that keeps serving their own address instead of the one you entered. Turn it off for the records that point to GitHub.
+- **No CNAME for `www`?** If your provider refuses to create one, `A` records for `www` work fine as well.
 - **Certificate stays on “none”.** If GitHub doesn’t issue a certificate after the DNS is correct, remove the custom domain in the Pages settings and add it again. It took about 30 seconds after that.
 - **Still `http://` after enforcing HTTPS.** GitHub’s cache can keep serving the old page for a while. A new deployment clears it.
 - **Redirects.** GitHub Pages can’t do server-side redirects, so the old WordPress addresses for categories, tags and pages use a small redirect page instead of a real 301. If you need real 301 redirects, put Cloudflare in front of it. I didn’t, for now.
 
-I also switched on Domain Lock, two-factor authentication, auto-renew and security alerts at Namecheap, and added a DMARC record. If a domain expires or gets hijacked, it’s over, so this is worth five minutes.
+I also switched on domain lock, two-factor authentication, auto-renew and security alerts at my registrar, and added a DMARC record. If a domain expires or gets hijacked, it’s over, so this is worth five minutes.
 
 ## What I learned
 
@@ -154,7 +170,7 @@ Some tips if you want to do the same:
 
 ## Conclusion
 
-Moving from WordPress to Hugo and GitHub Pages is not as hard as I thought, especially with GitHub Copilot doing the repetitive work. The result is a fast website without cookies, where every post is a Markdown file in Git and publishing a new post is a `git push`.
+Moving from WordPress to Hugo and GitHub Pages is not as hard as I thought, especially with GitHub Copilot doing the repetitive work. The result is a fast website without cookies, where every post is a Markdown file in Git, old comments are kept, new comments run on GitHub Discussions and publishing a new post is a `git push`.
 
 I hope that this post helps you to make the move as well, and if you have any questions, feel free to reach out!
 
