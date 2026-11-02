@@ -2,7 +2,7 @@
 title: "Moving from WordPress to Hugo and GitHub Pages with GitHub Copilot"
 date: 2026-10-31T14:00:00+01:00
 slug: "moving-from-wordpress-to-hugo-and-github-pages"
-categories: ["General"]
+categories: ["General", "GitHub Copilot", "GitHub Pages", "Hugo"]
 tags: ["GitHub Copilot", "GitHub Pages", "Hugo", "Markdown", "Static website", "WordPress"]
 description: "How I moved this blog from WordPress to a static Hugo site on GitHub Pages with the help of GitHub Copilot: export, theme, SEO, redirects, RSS, comments with Giscus and publishing new posts."
 draft: false
